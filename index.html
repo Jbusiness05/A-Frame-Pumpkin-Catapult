@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Da Crib</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@436d40c/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+</head>
+
+<body>
+
+
+    <a-scene background="color:#87CEEB">
+
+        <!-- Forest environment link (comment out when unwanted) -->
+        <a-entity environment="preset: forest;
+          groundColor: #445;
+          grid: cross;">
+        </a-entity>
+        <a-entity 0 0 3>
+            <a-camera>
+                <a-entity cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1"
+                    geometry="primitive: sphere; radius: 0.005" material="color: #000000; shader: flat; opacity: 0.5"
+                    animation__enter="property: scale;
+                                        to: 3 3 3;
+                                        dur: 1000;
+                                        easing: linear;
+                                        startEvents: mouseenter"
+                    event-set__reset="_event: animationcomplete__enter; scale: 1 1 1" animation__leave="property: scale;
+                                        to: 1 1 1;
+                                        dur: 1000;
+                                        easing: linear;
+                                        startEvents: mouseleave">
+                </a-entity>
+            </a-camera>
+
+            <!-- Yellow Box
+ <a-sphere id="yellow" color="#FFAA00" position="3 3 -7"
+event-set__respos="_event: click; position: 1 3 -7"
+animation="property: rotation;
+           to: 0 360 0;
+           loop: true;
+           dur: 1000;
+           easing: linear"> 
+</a-sphere> -->
+            <a-plane scale="20 20 1.340" position="0 0 -7" rotation="90 0 0" side="double" color="green">
+
+            </a-plane>
+        </a-entity>
+        <!-- Whole Catapult -->
+        <!-- Base -->
+        <a-entity position="2 0 -5" rotation="0 90 0">
+            <a-entity>
+                <a-box scale="0.477 0.478 8.170" position="0 0.234 -2.415" color="black">
+                </a-box>
+                <a-box scale="0.477 0.478 5.116" position="0 2.570 -2.415" color="black" rotation="90 0 0">
+                </a-box>
+                <a-box scale="0.477 0.478 8.170" position="4 0.234 -2.415" color="black">
+                </a-box>
+                <a-box scale="0.477 0.478 5.116" position="4 2.15570 -2.4" color="black" rotation="90 0 0">
+                </a-box>
+                <a-box scale="0.477 0.478 5.572" position="4 2.256 -4.354" color="black" rotation="-45 0 0">
+                </a-box>
+                <a-box scale="0.477 0.478 5.572" position="0 2.256 -4.354" color="black" rotation="-45 0 0">
+                </a-box>
+                <a-box scale="0.477 0.478 4.710" position="1.994 4.021 -2.412" color="black" rotation="0 90 0">
+                </a-box>
+                <a-box scale="0.477 0.478 4.710" position="1.994 0 -2.412" color="black" rotation="0 90 0">
+                </a-box>
+                <a-box scale="0.477 0.478 4.710" position="1.994 0 1.412" color="black" rotation="0 90 0">
+                </a-box>
+                <a-box scale="0.477 0.478 5.572" position="1.412 0 0.956" color="black" rotation="45 0 0">
+                </a-box>
+                <a-box scale="0.477 0.478 5.572" position="2.523 0 0.990" color="black" rotation="45 0 0">
+                </a-box>
+            </a-entity>
+            <!-- base finish -->
+            <!-- Arm -->
+            <a-entity id="Arm">
+                <a-box scale="0.687 0.453 5.572" position="2 1 2" color="black" rotation="0 180 0">
+                </a-box>
+                <a-box scale="1 .2 1" position="2 0.884 5.171" color="red" rotation="0 180 0">
+                </a-box>
+                <!-- animation="property: rotation;
+from: 0 0 0;
+to: -90 0 0;
+loop: true;
+dur: 5000;
+easing: easeInOutCubic"
+paused="true" -->
+            </a-entity>
+            <!-- arm finish -->
+
+<!-- Pumpkin -->
+            <a-entity id="Pumpkin">
+                <a-sphere scale="1 1 1" position="1.2 2 5.171" color="red"></a-sphere>
+            </a-entity>
+<!-- Pumpkin Finish -->
+
+            <!-- Giant Red Ball at the bottom that ius supoposed to move the catapult -->
+            <a-sphere color="#AA0000" position="-2 0 0" event-set__enter="_event: mouseenter; material.color: #FF0FF0"
+                event-set__leave="_event: mouseleave; material.color: #AA0000"
+                event-set__tarpos="_event: click; _target: #Arm; rotation: -90 0 0; dur:10000;"
+                event-set__tarpos__2="_event: click; _target: #Pumpkin; rotation: -150 0 0; dur: 10000;">
+
+
+            </a-sphere>
+        </a-entity>
+        <!-- Whole Catapult Finish -->
+    </a-scene>
+</body>
+
+</html>
